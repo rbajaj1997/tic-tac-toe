@@ -1,0 +1,42 @@
+.button {
+    width: 8rem;
+    height: 8rem;
+    background: inherit;
+    display: inline-block;
+    outline: none;
+    border: none;
+}
+
+@media only screen and (max-width: 450px) {
+    .button {
+        width: 5rem;
+        height: 5rem;
+        background: inherit;
+        display: inline-block;
+        outline: none;
+        border: none;
+    }
+}
+
+.button:hover,
+.button:focus {
+    outline: none;
+}
+
+.button:focus {
+    outline: none;
+}
+
+.button:active {
+    outline: none;
+}
+
+.rightLeft {
+    border-right: 3px solid black;
+    border-left: 3px solid black;
+}
+
+.topBottom {
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
