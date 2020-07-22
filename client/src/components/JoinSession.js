@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Alert from '@material-ui/lab/Alert';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -13,19 +12,9 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 //import io from 'socket.io-client';
 import socket from '../api/port';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        width: '100%',
-        '& > * + *': {
-            marginTop: theme.spacing(2),
-        },
-    },
-}));
-
 
 
 export default function JoinSession() {
-    const classes = useStyles();
     const [isDialogOpen, setDialogOpen] = useState(false);
     const [username, setUsername] = useState('');
     const [roomKey, setRoomKey] = useState('');

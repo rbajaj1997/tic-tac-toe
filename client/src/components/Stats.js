@@ -1,5 +1,4 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -10,41 +9,39 @@ export default function Stats(props) {
     const losses = isp1 ? gamestate.p2_score : gamestate.p1_score;
     const ties = gamestate.ties;
 
+
     return (
-        <Grid container direction="column" spacing={6}>
-            <Grid item>
-                <Typography variant="h5" gutterBottom>
+        <div className="arena-stats">
+            <div className="arena-stats__turn">
+                <Typography variant="h6">
                     {isp1 ? gamestate.p1_turn ? "Your turn" : `${gamestate.p2_name}'s turn` : null}
                     {!isp1 ? !gamestate.p1_turn ? "Your turn" : `${gamestate.p1_name}'s turn` : null}
                 </Typography>
-            </Grid>
-            <Grid item>
+            </div>
+            <div className="arena-stats__spinner">
                 {((isp1 && !gamestate.p1_turn) || (!isp1 && gamestate.p1_turn)) ? <CircularProgress /> : null}
-            </Grid>
-            <Grid container item direction="column" spacing={4}>
-                <Grid container item spacing={3}>
-                    <Grid item>
-                        Wins
-                    </Grid>
-                    <Grid item>
-                        Ties
-                    </Grid>
-                    <Grid item>
-                        Losses
-                    </Grid>
-                </Grid>
-                <Grid container item spacing={3}>
-                    <Grid item>
-                        {wins}
-                    </Grid>
-                    <Grid item>
-                        {ties}
-                    </Grid>
-                    <Grid item>
-                        {losses}
-                    </Grid>
-                </Grid>
-            </Grid>
-        </Grid>
+            </div>
+            <div className="arena-stats__score">
+                <div className="arena-stats__score--title">
+                    <div>
+                        <span className="full-text"><Typography variant="h6">Wins</Typography></span>
+                        <span className="short-text"><Typography variant="h6">W</Typography></span>
+                    </div>
+                    <div>
+                        <span className="full-text"><Typography variant="h6">Ties</Typography></span>
+                        <span className="short-text"><Typography variant="h6">T</Typography></span>
+                    </div>
+                    <div>
+                        <span className="full-text"><Typography variant="h6">Losses</Typography></span>
+                        <span className="short-text"><Typography variant="h6">L</Typography></span>
+                    </div>
+                </div>
+                <div className="arena-stats__score--score">
+                    <div><Typography variant="h6">{wins}</Typography></div>
+                    <div><Typography variant="h6">{ties}</Typography></div>
+                    <div><Typography variant="h6">{losses}</Typography></div>
+                </div>
+            </div>
+        </div>
     );
 }

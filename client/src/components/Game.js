@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import socket from '../api/port';
 import Board from './Board';
-import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import Stats from './Stats';
 
 /**
@@ -11,23 +10,9 @@ import Stats from './Stats';
  * -1 -> Player 2 i.e He is X
  */
 
-const useStyles = makeStyles({
-    mainGrid: {
-        //border: '1px solid black',
-        height: '100vh'
-    },
-    board: {
-        // border: '1px solid black',
-        textAlign: 'center'
-    },
-    info: {
-        //border: '1px solid black',
-    }
-});
 
 export default function Game(props) {
     const { gamestate, isp1 } = props;
-    const classes = useStyles();
     const [announcement, setAnnouncement] = useState(false);
     const [msg, setMsg] = useState('');
     const [oppDisconnected, setOppDisconnected] = useState(false);
@@ -55,6 +40,8 @@ export default function Game(props) {
                     setAnnouncement(true);
                     setMsg('It\'s a tie! Play another one?');
                     break;
+                default:
+                    break;
             }
             setTimeout(() => {
                 setAnnouncement(false);
@@ -65,18 +52,14 @@ export default function Game(props) {
             setOppDisconnected(true);
         })
 
-    }, [])
+    }, [isp1])
 
     return (
-        <Grid container spacing={4} xs={12} className={classes.mainGrid} justify="space-evenly" alignItems="center">
-            {oppDisconnected && <div>Opponent Disconnected!</div>}
-            <Grid className={classes.board}  >
-                {!oppDisconnected && <Board gamestate={gamestate} isp1={isp1} />}
-            </Grid>
-            <Grid item className={classes.info} >
-                {announcement && <div>{msg}</div>}
-                {!announcement && <Stats gamestate={gamestate} isp1={isp1} />}
-            </Grid>
-        </Grid>
+        <div className="arena">
+            {oppDisconnected && <div> <Typography variant="h4">Opponent Disconnected!</Typography> </div>}
+            {!oppDisconnected && <Board gamestate={gamestate} isp1={isp1} />}
+            {!oppDisconnected && announcement && <div className="arena-stats"><Typography variant="h4">{msg}</Typography></div>}
+            {!oppDisconnected && !announcement && <Stats gamestate={gamestate} isp1={isp1} />}
+        </div>
     )
 }
