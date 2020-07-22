@@ -24,7 +24,7 @@ export default function Landing() {
                 </Grid>
             </Grid>
             <Grid item style={{ marginTop: '2rem' }}>
-                <Button variant="contained" target="_blank" style={{ marginRight: '2rem' }} color="default" href="https://github.com/rbajaj1997">
+                <Button variant="contained" target="_blank" style={{ marginRight: '2rem' }} color="default" href="https://github.com/rbajaj1997/tic-tac-toe">
                     Github Repo
             </Button>
             </Grid>
