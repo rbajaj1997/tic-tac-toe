@@ -3,6 +3,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const Session = require('./SessionObject').Session;
 const path = require('path');
+const express = require('express');
 
 var roomToSessionMapping = {}; //only for joining lobbies
 var socketToSessionMapping = {};
